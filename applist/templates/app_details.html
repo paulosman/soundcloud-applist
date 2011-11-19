@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="app_details">
+  <h2><a href="{{ details.permalink_url }}">{{ details.name }}</a></h2>
+</div>
+<h3>Tracks</h3>
+<ul>
+  {% for track in tracks %}
+    <li>{{ track.title }}</li>
+  {% endfor %}
+</ul>
+{% endblock %}
