@@ -2,11 +2,26 @@
 <html>
 <head>
   <title>SoundCloud Applist</title>
+  <link rel="stylesheet" type="text/css" href="/static/css/labs.css" />
+  <link rel="stylesheet" type="text/css" href="/static/css/application.css" />
   <script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
   <script type="text/javascript" src="/static/js/soundcloud.player.api.js"></script>
 </head>
 <body>
-{% block content %}{% endblock %}
+<div id="page">
+  <div id="header">
+    <a href="/">
+      <h1>APPLIST</h1>
+    </a>
+  </div>
+  <div class="content">
+    {% block content %}{% endblock %}
+  </div>
+  <div class="soundcloudlabs">
+    <a class="imprint" href="http://soundcloud.com/imprint">Imprint</a>
+    <a class="sc-labs" title="A SoundCloud Labs project" href="http://soundcloudlabs.com"></a>
+  </div>
+</div>
 </body>
 <script type="text/javascript">
 var tracks_url = function(url) {

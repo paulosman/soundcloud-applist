@@ -1,0 +1,392 @@
+@font-face {
+  font-family: "Interstate";
+  font-weight: normal;
+  src: local("interstate-regular"), url(../fonts/Interstate-Regular.ttf) format("truetype");
+}
+
+body {
+  background-image: url('../images/bg.png');
+  margin: 0;
+  padding: 0 0 50px 0;
+  font-family: "Lucida Grande", Helvetica, Arial, sans-serif;
+  color: #333;
+  font-size: 12px;
+  line-height: 1.4em;
+}
+
+h1, h2 {
+  font-weight: normal;
+}
+
+a, a:visited {
+  color: #06c;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #f60;
+  text-decoration: none;
+}
+
+p {
+  margin: 0 0 15px 0;
+}
+
+form {
+  padding: 10px 0
+}
+
+#page {
+  width: 80%;
+  background: #fff;
+  margin: 0 auto 50px;
+  padding: 25px;
+  position: relative;
+  -webkit-box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.4);
+  -moz-box-shadow:    0px 0px 4px rgba(0, 0, 0, 0.4);
+  box-shadow:         0px 0px 4px rgba(0, 0, 0, 0.4);      
+}
+
+#header {
+  background: #f60;
+  margin: -25px -30px 20px -30px;
+  padding: 15px 30px 15px 20px;
+  background-color: #ff8330;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#ff8330), to(#ff3d00)); /* Safari 4+, Chrome */
+  background-image: -webkit-linear-gradient(top, #ff8330, #ff3d00); /* Chrome 10+, Saf5.1+ */
+  background-image: -moz-linear-gradient(top, #ff8330, #ff3d00); /* FF3.6 */
+  background-image: -ms-linear-gradient(top, #ff8330, #ff3d00); /* IE10 */
+  background-image: -o-linear-gradient(top, #ff8330, #ff3d00); /* Opera 11.10+ */
+  background-image: linear-gradient(top, #ff8330, #ff3d00);
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#ff8330', EndColorStr='#ff3d00'); /* IE6–IE9 */
+  -webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+     -moz-box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+       -o-box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+          box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+  -moz-border-radius-bottomright:        3px;
+  -moz-border-radius-bottomleft:         3px;
+  border-bottom-right-radius:            3px;
+  border-bottom-left-radius:             3px;
+  -webkit-border-bottom-right-radius:    3px;
+  -webkit-border-bottom-left-radius:     3px;
+
+}
+
+#header h1 {
+  padding: 0 0 0 70px;
+  margin: 0;
+  color: #fff;
+  font-size: 21px;
+  line-height: 1.3em;
+  font-family: Interstate, "Lucida Grande", Helvetica, Arial, sans-serif;
+  background: transparent url('../images/soundcloud.png') 0 -3px no-repeat;
+  text-shadow: rgba(0,0,0,0.2) 0px 0px 2px;
+}
+
+.intro {
+  font-size: 18px;
+  line-height: 1.3em;
+  margin-bottom: 20px;
+}
+
+.intro p {
+  font-size: 18px;
+  line-height: 1.3em;
+}
+
+ul.tabs {
+  list-style: none;
+  margin: 10px -25px 20px;
+  padding: 0 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+ul.tabs li {
+  float: left;
+  font-size: 13px;
+  padding: 0px 15px;
+  position: relative;
+  top: 11px;
+  border-left: 1px solid #ccc;
+  cursor: pointer;
+}
+
+ul.tabs li.first {
+  border-left: 0px solid #ccc;
+}
+
+ul.tabs li.current {
+  border: 1px solid #ccc;
+  border-bottom: 1px solid #fff;
+  position: relative;
+  top: 1px;
+  color: #f60;
+  padding: 9px 15px;
+  margin-right: -1px;
+  font-weight: bold;
+  -moz-border-radius-topright:        3px;
+  -moz-border-radius-topleft:         3px;
+  border-top-right-radius:            3px;
+  border-top-left-radius:             3px;
+  -webkit-border-top-right-radius:    3px;
+  -webkit-border-top-left-radius:     3px;
+}
+
+ul.tab-content-container {
+  list-style: none;
+  margin: 0;
+  padding: 0 0 25px 0;
+}
+
+ul.tab-content-container li.tab-content {
+  display: none;
+}
+
+ul.tab-content-container li.tab-content.current {
+  display: block;
+}
+
+ul.bullet {
+  list-style: none;
+  margin: 15px 0 10px !important;
+  padding: 0;
+}
+
+ul.bullet li {
+  margin: 7px 10px 7px 0px;
+  padding-left: 17px;
+  background: transparent url(/images/bullet.png) 2px 2px no-repeat;
+}
+
+ul.bullet.big li {
+  font-size: 18px;
+  margin: 14px 10px 14px 0px;
+}
+
+.button {
+  text-align: center;
+  border: 1px solid #ccc;
+  padding: 2px 14px;
+  color: #333;
+  font-size: 12px;
+  margin-top: 8px;
+  background: -webkit-gradient(linear, 0 0, 0 100%, from(#fff), to(#e5e5e5)) repeat-x, #fff;
+  -webkit-border-radius: 50px;
+  -webkit-transition: background 0.3s linear, color 0.1s linear, border 0.2s linear, box-shadow 0.2s linear;
+  -moz-transition:    background 0.3s linear, color 0.1s linear, border 0.2s linear, moz-box-shadow 0.2s linear;
+  -o-transition:      background 0.3s linear, color 0.1s linear, border 0.2s linear, box-shadow 0.2s linear;
+}
+
+.button, .button:visited {
+  display: block;
+  float: left;
+  margin: 0 5px 0 0;
+  padding: 0 14px;
+  position: relative;
+  
+  border-width: 1px;
+  border-style: solid;
+  border-color: #ddd #d7d7d7 #ccc #d7d7d7;
+  -webkit-border-radius: 50px; /* Safari 3-4, iOS 1+, Android 1.5+ */
+     -moz-border-radius: 50px; /* FF1+ */
+          border-radius: 50px; /* Opera 10.5, IE9, Safari 5, Chrome, FF4 */
+  /* Prevents background colour from leaking outside the border */
+  -webkit-background-clip: padding-box;
+     -moz-background-clip: padding;
+       /* background-clip: padding-box; (opera doesnâ€™t like this) */
+  
+  
+  background-color: #e5e5e5;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#e5e5e5)); /* Safari 4+, Chrome */
+  background-image: -webkit-linear-gradient(top, #fff, #e5e5e5); /* Chrome 10+, Saf5.1+ */
+  background-image: -moz-linear-gradient(top, #fff, #e5e5e5); /* FF3.6 */
+  background-image: -ms-linear-gradient(top, #fff, #e5e5e5); /* IE10 */
+  background-image: -o-linear-gradient(top, #fff, #e5e5e5); /* Opera 11.10+ */
+  background-image: linear-gradient(top, #fff, #e5e5e5);
+  
+  font-size: 12px;
+  line-height: 19px;
+  height: auto;
+  text-decoration: none;
+  font-weight: normal;
+  text-shadow: white 0 1px 0; /* FF3.5+, Opera 9+, Saf1+, Chrome */
+  color: #333;
+  cursor: pointer;
+  
+  -webkit-transition: border-color .3s linear, color .4s linear, -webkit-box-shadow .4s linear; /* Safari 3.2+, Chrome */
+     -moz-transition: border-color .3s linear, color .4s linear, -moz-box-shadow .4s linear; /* FF4+ */
+       -o-transition: border-color .3s linear, color .4s linear, box-shadow .4s linear; /* Opera 10.5+ */
+      -ms-transition: border-color .3s linear, color .4s linear, box-shadow .4s linear; /* IE10? */
+          transition: border-color .3s linear, color .4s linear, box-shadow .4s linear;
+}
+
+.button:hover {
+  border-color: #c0c0c0 #cacaca #b0b0b0 #cacaca;
+  -webkit-box-shadow: 0 0 4px rgba(0, 0, 0, 0.3); /* Safari 3.0+, Chrome */  
+     -moz-box-shadow: 0 0 4px rgba(0, 0, 0, 0.3); /* FF3.5+ */
+          box-shadow: 0 0 4px rgba(0, 0, 0, 0.3); /* FF 4.0+, Chrome 10+, Opera 10.5, IE9 */
+  color: #111;
+}
+
+.button:active {
+  background-color: #fff;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#e5e5e5), to(#fff)); /* Safari 4+, Chrome */
+  background-image: -webkit-linear-gradient(top, #e5e5e5, #ffffff); /* Chrome 10+, Saf5.1+ */
+  background-image: -moz-linear-gradient(top, #e5e5e5, #fff); /* FF3.6 */
+  background-image: -ms-linear-gradient(top, #e5e5e5, #fff); /* IE10 */
+  background-image: -o-linear-gradient(top, #e5e5e5, #fff); /* Opera 11.10+ */
+  background-image: linear-gradient(top, #e5e5e5, #fff);
+}
+
+.button.big {
+  font-size: 21px;
+  line-height: 38px;
+  padding: 6px 30px;
+  padding: 0 30px;
+}
+
+.soundcloudlabs {
+  position: relative;
+  top: 50px;
+  margin: 0 -25px;
+}
+
+body.popup .soundcloudlabs {
+  display: none;
+}
+
+.soundcloudlabs a.imprint {
+  border-right: 1px solid #999;
+  padding: 0 5px 0 0;
+  margin-right: 2px;
+}
+
+a.sc-labs {
+  background: transparent url(../images/sclabs.png);
+  position: absolute;
+  width: 160px;
+  height: 25px;
+  right: -3px;
+}
+
+/* form elements */
+
+input.text {
+  display: block;
+  width: 60%;
+  border: 1px solid #ccc;
+  margin-bottom: 15px;
+  padding: 4px 2px;
+  font-size: 15px;
+  -moz-border-radius-bottomright:     7px;
+  -moz-border-radius-topleft:         7px;
+  border-bottom-right-radius:         7px;
+  border-top-left-radius:             7px;
+  -webkit-border-bottom-right-radius: 7px;
+  -webkit-border-top-left-radius:     7px;
+  background: -webkit-gradient(linear, 0 0, 0 100%, from(#f6f6f6), to(#fff)) repeat-x, #fff;
+  background: -moz-linear-gradient(90deg, #fff, #f6f6f6) repeat-x scroll 0 0 #fff;
+  -moz-background-size:     100% 4px;
+  -webkit-background-size:  100% 4px;
+  background-size:          100% 4px;
+  outline: 0;
+  -webkit-transition: background 0.3s linear, color 0.1s linear, border 0.2s linear, box-shadow 0.2s linear;
+  -moz-transition:    background 0.3s linear, color 0.1s linear, border 0.2s linear, moz-box-shadow 0.2s linear;
+  -o-transition:      background 0.3s linear, color 0.1s linear, border 0.2s linear, box-shadow 0.2s linear;
+}
+
+input.text:hover {
+  border-color: #b4b4b4;
+}
+
+input.text:focus {
+  background: #f7faff;
+  border-color: #b4b4b4;
+  background: -webkit-gradient(linear, 0 0, 0 100%, from(#e0e5ed), to(#f7faff)) repeat-x, #f7faff;
+  background: -moz-linear-gradient(90deg, #f7faff, #e0e5ed) repeat-x scroll 0 0 #f7faff;
+}
+
+label span {
+  border-left: 1px solid #eee;
+  padding-left: 7px;
+  color: #666;
+  margin-left: 3px;
+}
+
+.radio, .checkbox {
+  margin-bottom: 15px;
+}
+
+.radio input, .radio label, .checkbox input, .checkbox label {
+  float: left;
+  margin: 0 5px 0 0;
+  line-height: 0.9em;
+}
+
+
+/* errors */
+
+label.not-valid span, .error {
+  color: #f60;
+}
+
+input.text.not-valid {
+  border: 1px solid #f60;
+}
+
+
+/* pop up */
+
+body.popup #page {
+  width: 80%;
+  background: #fff;
+  margin: 0 auto 10px;
+  padding: 20px;
+  -webkit-box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.4);
+  -moz-box-shadow:    0px 0px 4px rgba(0, 0, 0, 0.4);
+  box-shadow:         0px 0px 4px rgba(0, 0, 0, 0.4);      
+}
+
+body.popup #header {
+  margin: -25px -25px 20px -25px;
+  padding: 10px 15px 5px 15px;  
+}
+
+body.popup #header h1 {
+  font-size: 13px;
+  padding: 0 0 0 30px;  
+  line-height: 1em;  
+  text-shadow: rgba(0,0,0,0) 0px 0px 1px;
+  background: transparent url('../images/soundcloud-tiny.png') 0 -2px no-repeat;
+}
+
+body.popup ul.tabs {
+  margin: 10px -20px 20px;
+  padding: 0 10px;
+}
+
+body.popup ul.tabs li {
+  font-size: 12px;
+  padding: 0px 10px;
+}
+
+body.popup ul.tabs li.current {
+  padding: 9px 10px;
+}
+
+
+/* clearing */
+
+ul, #page, .radio, .checkbox, .content {
+  zoom: 1;  
+}
+
+ul:after, #page:after, .radio:after, .checkbox:after, .content:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+
+

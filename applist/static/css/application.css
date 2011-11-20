@@ -1,0 +1,184 @@
+/* progressbar */
+
+.progressbar, .percentagebar { 
+  width: 100%;
+  height: 20px;
+  margin-bottom: 10px;
+}
+
+.progressbar {
+  -webkit-border-radius: 13px;
+  -moz-border-radius: 13px;
+  overflow: hidden;
+  background-color: #5C5C5C;
+  background: -moz-linear-gradient(center top, #5C5C5C 0%, #747474 50%, #5C5C5C 100%) repeat scroll 0 -2px #5C5C5C;
+  background-position: 0px 0px;
+  background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #5C5C5C), color-stop(0.5, #747474), color-stop(1, #5C5C5C)) repeat-x, #5C5C5C;
+  background: -moz-linear-gradient(center top, #5C5C5C 0%, #747474 50%, #5C5C5C 100%) repeat scroll 0 -2px #5C5C5C;
+  -moz-background-size: 0 100%;
+  -webkit-background-size: 0 100%;
+  -webkit-box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.4);
+  -moz-box-shadow:    0px 0px 4px rgba(0, 0, 0, 0.4);
+  box-shadow:         0px 0px 4px rgba(0, 0, 0, 0.4);
+}
+
+.percentagebar {
+  width: 99%;
+  background-color: #39F;
+  
+  background: -moz-linear-gradient(center top, #39F 0%, #74B9FF 50%, #39F 100%) repeat scroll 0 -2px #39F;
+  background-position: 0px 0px;
+  background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #39F), color-stop(0.5, #74B9FF), color-stop(1, #39F)) repeat-x, #39F;
+  background: -moz-linear-gradient(center top, #39F 0%, #74B9FF 50%, #39F 100%) repeat scroll 0 -2px #39F;
+  -moz-background-size: 0 100%;
+  -webkit-background-size: 0 100%;
+  display: inline;
+  float: left;
+}
+
+.percentage {
+  display: inline;
+}
+
+.state.uploading, .state.pending, .state.downloading {
+  color: #666;
+  font-size: 12px;
+}
+
+.state.finished {
+  font-size: 12px;
+}
+
+.state.failed {
+  color: #f30;
+  font-size: 12px;
+}
+
+.close {
+  color: #666;
+  text-decoration: none;
+  float: right;
+  padding-top: 10px;
+}
+
+.close:hover {
+  color: #666;
+  text-decoration: underline;
+}
+
+ul.importing {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+ul.importing li {
+  padding: 10px 0;
+  border-bottom: 1px solid #ccc;
+}
+/*.hidden {
+  display: none;
+}
+
+h1.header {
+  font-size: 18px;
+  height: 30px;
+}
+
+.warning {
+  color: red;
+  font-size: 9px;
+}
+
+.avatar {
+  display: block;
+  float: right;
+  display: inline;
+
+}
+
+.details {
+  float: left;
+  display: inline;
+  width: 200px;
+  margin-left: 5px;
+  margin-top: -4px;
+}
+
+.infos, .description, .tracks {
+  display: block;
+  position: relative;
+  clear: both;
+}
+
+.description textarea {
+  display: block;
+  clear: both;
+  width: 100%;
+  height: 100px;
+}
+
+.clear {
+  clear: both;
+}
+
+
+
+
+.state {
+  float: right;
+  display: inline;
+}
+
+
+h3.title {
+  margin-bottom: 2px;
+}
+
+
+.close {
+  height: 15px;
+  float: right;
+}
+
+form#job label {
+  font-weight: bold;
+  color: #06C;
+}
+form#job input {
+  display: block;
+  width: 100%;
+}
+
+form#job input[type=text] { 
+  width: 314px; 
+}
+form#job input[type=submit] { 
+  margin-top: 5px;
+}
+
+
+.track_url {
+  width: 100%;
+  display: block;
+  text-align: center;
+}
+
+.error, .track_url, .progressbar {
+  margin-bottom: 5px;
+}
+
+.error {
+.error, .notice {
+  width: 100%;
+  display: block;
+  text-align: center;
+  color: red;
+}
+
+.state {
+  font-size: 10px;
+}
+
+*/
+
