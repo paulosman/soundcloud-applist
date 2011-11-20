@@ -1,7 +1,11 @@
 import urllib
+import hashlib
 
 import httplib2
 import simplejson
+
+from flask import g
+
 
 URLS = {
     'BASE': 'https://api.soundcloud.com/%(path)s.%(fmt)s',
@@ -17,11 +21,22 @@ def _soundcloud_url(path, **kwargs):
     return url
 
 
+def _request_key(path, **kwargs):
+    unhashed = '%s:%s' % (path, simplejson.dumps(kwargs))
+    return hashlib.md5(unhashed).hexdigest()
+
+
 def sc_request(path, **kwargs):
+    mc = g.mc
+    response = mc.get(_request_key(path, **kwargs))
+    if response:
+        return response
     client = httplib2.Http()
     url = _soundcloud_url(path, **kwargs)
     resp, content = client.request(url)
-    return simplejson.loads(content)
+    data = simplejson.loads(content)
+    mc.set(_request_key(path, **kwargs), data)
+    return data
 
 
 def get_access_token(client_id, client_secret, redirect_uri, grant_type, code):
@@ -34,3 +49,11 @@ def get_access_token(client_id, client_secret, redirect_uri, grant_type, code):
         'code': code,
     }))
     return simplejson.loads(content)
+
+
+def get_tracks(app_id, order_by='created_at'):
+    if order_by not in [None, 'created_at', 'hotness']:
+        order_by = 'created_at'
+    return sc_request(
+        'apps/%s/tracks' % (app_id,), client_id=g.app.config['CLIENT_ID'],
+        order=order_by)

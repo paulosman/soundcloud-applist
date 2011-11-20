@@ -1,0 +1,16 @@
+{% for track in tracks %}
+  <div class="track_information">
+    <p>"<a href="{{ track.permalink_url }}">{{ track.title }}</a>" by <a href="{{ track.user.permalink_url }}">{{ track.user.username }}</a></p>
+  </div>
+  <object height="81" width="100%" id="track{{ track.id }}"
+        classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000">
+    <param name="movie" 
+           value="http://player.soundcloud.com/player.swf?url={{ track.permalink_url|urlencode }}&enable_api=true&object_id=track{{ track.id }}"></param>
+    <param name="allowscriptaccess" value="always"></param>
+    <embed 
+        src="http://player.soundcloud.com/player.swf?url={{ track.permalink_url|urlencode }}&enable_api=true&object_id=track{{ track.id }}"
+        allowscriptaccess="always" type="application/x-shockwave-flash"
+        height="81" width="100%" name="track{{track.id}}">
+    </embed>
+  </object>
+{% endfor %}

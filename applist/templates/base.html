@@ -2,8 +2,26 @@
 <html>
 <head>
   <title>SoundCloud Applist</title>
+  <script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
+  <script type="text/javascript" src="/static/js/soundcloud.player.api.js"></script>
 </head>
 <body>
 {% block content %}{% endblock %}
 </body>
+<script type="text/javascript">
+var tracks_url = function(url) {
+    var i = url.indexOf('?');
+    if (i != -1) {
+        var qs = url.substring(i);
+        return url.substring(0, i) + 'tracks/' + qs;
+    }
+    return url + 'tracks/';
+}
+$('.order_by').bind('click', function(e) {
+    e.preventDefault();
+    $.get(tracks_url($(this).attr('href')), function(data) {
+        $('#track_listing').html(data);
+    });
+});
+</script>
 </html>
