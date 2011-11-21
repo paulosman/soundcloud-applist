@@ -39,7 +39,7 @@ def app_details(app_id):
         'apps/%s' % (app_id,), client_id=app.config['CLIENT_ID'])
     tracks = get_tracks(app_id, order_by=order_by)
     return render_template(
-        'app_details.html', tracks=tracks, details=app_detail)
+        'app_details.html', tracks=tracks, app=app_detail)
 
 
 @app.route('/')

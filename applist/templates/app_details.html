@@ -1,19 +1,19 @@
 {% extends "base.html" %}
 {% block content %}
 
-<div class="app_details">
-  <h2><a href="{{ details.permalink_url }}">{{ details.name }}</a></h2>
-  <small><a href="{{ url_for('index') }}">Choose another app</a></small>
-</div>
+<h3>Created with <a href="{{ app.permalink_url }}">{{ app.name }}</a></h3>
+<div class="tab-ui">
+  <ul class="tabs">
+    <li class="current" name="{{ app.id }}">Order by date</li>
+    <li name="{{ app.id }}">Order by hotness</li>
+  </ul>
 
-<h3>Tracks</h3>
-<ul>
-  <li><a class="order_by" href="{{ url_for('app_details', app_id=details.id, order_by='hotness') }}">hotness</a></li>
-  <li><a class="order_by" href="{{ url_for('app_details', app_id=details.id) }}">creation time</a></li>
-</ul>
-
-<div id="track_listing">
-  {% include "_tracks.html" %}
+  <ul class="tab-content-container">
+    <li class="tab-content current">
+      {% include "_tracks.html" %}
+    </li>
+    <li class="tab-content"></li>
+  </ul>
 </div>
 
 {% endblock %}

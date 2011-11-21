@@ -4,8 +4,10 @@
   <title>SoundCloud Applist</title>
   <link rel="stylesheet" type="text/css" href="/static/css/labs.css" />
   <link rel="stylesheet" type="text/css" href="/static/css/application.css" />
+  <link rel="stylesheet" type="text/css" href="/static/css/sc-player-minimal.css" />
   <script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
   <script type="text/javascript" src="/static/js/soundcloud.player.api.js"></script>
+  <script type="text/javascript" src="/static/js/sc-player.js"></script>
 </head>
 <body>
 <div id="page">
@@ -24,19 +26,40 @@
 </div>
 </body>
 <script type="text/javascript">
-var tracks_url = function(url) {
-    var i = url.indexOf('?');
-    if (i != -1) {
-        var qs = url.substring(i);
-        return url.substring(0, i) + 'tracks/' + qs;
-    }
-    return url + 'tracks/';
-}
-$('.order_by').bind('click', function(e) {
-    e.preventDefault();
-    $.get(tracks_url($(this).attr('href')), function(data) {
-        $('#track_listing').html(data);
+$(function() {
+    var tracks_url = function(url) {
+        var i = url.indexOf('?');
+        if (i == -1)
+            return url + 'tracks/';
+        return url.substring(0, i) + 'tracks/' + url.substring(i);
+    };
+    $('.order_by').bind('click', function(e) {
+        e.preventDefault();
+        $.get(tracks_url($(this).attr('href')), function(data) {
+            $('#track_listing').html(data);
+        });
     });
-});
+    $("ul.tabs").each(function(){
+        $(this).find("li").first().addClass("first");
+    });
+
+    $("ul.tabs li").live("click", function() {
+        var order_bys = ['created_at', 'hotness'];
+        var index = $(this).index();
+        var app_id = $(this).attr('name');
+        var url = '/app/' + app_id + '/tracks/?order_by=' + order_bys[index];
+        var $tabs = $('ul.tab-content-container li.tab-content');
+
+        $(this).addClass("current").siblings().removeClass("current");
+        $tabs.html('');
+
+        $.get(url, function(data) {
+            var $tab = $($tabs.get(index));
+            $tab.html(data);
+            $tab.addClass('current').siblings().removeClass('current');
+            $('.sc-player').scPlayer();
+        });
+    });
+ });
 </script>
 </html>

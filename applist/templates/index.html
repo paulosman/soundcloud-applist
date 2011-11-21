@@ -1,9 +1,16 @@
 {% extends "base.html" %}
 
 {% block content %}
-<p>Hello There</p>
-<form action="" method="GET">
-  <input type="text" name="app_url" />
-  <input type="submit" value="Search" />
+<div class="intro">
+  <p>Get a list of tracks created with your app</p>
+</div>
+<p>To get started, enter the link to your app in the <a href="http://soundcloud.com/apps">SoundCloud app gallery</a> (e.g. http://soundcloud.com/apps/studio-one)</p>
+<form action="{{ url_for('index') }}" method="GET">
+  <label for="app_url">
+    App URL
+    <span>The SoundCloud URL for your application.</span>
+  </label>
+  <input type="text" name="app_url" id="app_url" class="text" />
+  <input class="submit button big" type="submit" value="View" />
 </form>
 {% endblock %}
