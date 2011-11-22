@@ -5,6 +5,11 @@
   <p>Get a list of tracks created with your app</p>
 </div>
 <p>To get started, enter the link to your app in the <a href="http://soundcloud.com/apps">SoundCloud app gallery</a> (e.g. http://soundcloud.com/apps/studio-one)</p>
+{% if error %}
+<div class="error">
+  {{ error }}
+</div>
+{% endif %}
 <form action="{{ url_for('index') }}" method="GET">
   <label for="app_url">
     App URL

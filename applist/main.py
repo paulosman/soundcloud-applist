@@ -48,6 +48,9 @@ def index():
     if app_url:
         resolved = sc_request(
             'resolve', url=app_url, client_id=app.config['CLIENT_ID'])
+        if 'errors' in resolved:
+            return render_template('index.html',
+                                   error='Sorry, we couldn\'t find your app')
         app_id = resolved['id']
         return redirect(url_for('details', app_id=app_id))
     return render_template('index.html')
