@@ -27,18 +27,6 @@
 </body>
 <script type="text/javascript">
 $(function() {
-    var tracks_url = function(url) {
-        var i = url.indexOf('?');
-        if (i == -1)
-            return url + 'tracks/';
-        return url.substring(0, i) + 'tracks/' + url.substring(i);
-    };
-    $('.order_by').bind('click', function(e) {
-        e.preventDefault();
-        $.get(tracks_url($(this).attr('href')), function(data) {
-            $('#track_listing').html(data);
-        });
-    });
     $("ul.tabs").each(function(){
         $(this).find("li").first().addClass("first");
     });
