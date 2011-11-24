@@ -26,20 +26,20 @@ def urlencode(uri, plus=True):
 
 
 @app.route('/app/<app_id>/tracks/')
-def app_tracks(app_id):
+def tracks(app_id):
     order_by = request.args.get('order_by')
     return render_template('_tracks.html', tracks=get_tracks(
         app_id, order_by=order_by))
 
 
 @app.route('/app/<app_id>/')
-def app_details(app_id):
+def details(app_id):
     order_by = request.args.get('order_by')
-    app_detail = sc_request(
+    app_details = sc_request(
         'apps/%s' % (app_id,), client_id=app.config['CLIENT_ID'])
     tracks = get_tracks(app_id, order_by=order_by)
     return render_template(
-        'app_details.html', tracks=tracks, app=app_detail)
+        'details.html', tracks=tracks, app=app_details)
 
 
 @app.route('/')
@@ -48,6 +48,9 @@ def index():
     if app_url:
         resolved = sc_request(
             'resolve', url=app_url, client_id=app.config['CLIENT_ID'])
+        if 'errors' in resolved:
+            return render_template('index.html',
+                                   error='Sorry, we couldn\'t find your app')
         app_id = resolved['id']
-        return redirect(url_for('app_details', app_id=app_id))
+        return redirect(url_for('details', app_id=app_id))
     return render_template('index.html')
