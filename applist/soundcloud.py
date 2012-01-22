@@ -26,7 +26,7 @@ def _request_key(path, **kwargs):
     return hashlib.md5(unhashed).hexdigest()
 
 
-def sc_request(path, **kwargs):
+def _request(path, **kwargs):
     mc = g.mc
     response = mc.get(_request_key(path, **kwargs))
     if response:
@@ -37,9 +37,19 @@ def sc_request(path, **kwargs):
     return data
 
 
+def resolve_url(url):
+    return _request('resolve', url=url,
+                      client_id=g.app.config['CLIENT_ID'])
+
+
+def get_app(app_id):
+    return _request('apps/%s' % (app_id,),
+                      client_id=g.app.config['CLIENT_ID'])
+
+
 def get_tracks(app_id, order_by='created_at'):
     if order_by not in [None, 'created_at', 'hotness']:
         order_by = 'created_at'
-    return sc_request(
+    return _request(
         'apps/%s/tracks' % (app_id,), client_id=g.app.config['CLIENT_ID'],
         order=order_by)

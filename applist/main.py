@@ -5,7 +5,7 @@ import memcache
 
 from flask import Flask, redirect, url_for, render_template, request, g
 
-from applist.soundcloud import sc_request, get_tracks
+from applist.soundcloud import get_app, get_tracks, resolve_url
 
 app = Flask(__name__)
 app.secret_key = os.urandom(24)
@@ -35,8 +35,7 @@ def tracks(app_id):
 @app.route('/app/<app_id>/')
 def details(app_id):
     order_by = request.args.get('order_by')
-    app_details = sc_request(
-        'apps/%s' % (app_id,), client_id=app.config['CLIENT_ID'])
+    app_details = get_app(app_id)
     tracks = get_tracks(app_id, order_by=order_by)
     return render_template(
         'details.html', tracks=tracks, app=app_details)
@@ -46,8 +45,7 @@ def details(app_id):
 def index():
     app_url = request.args.get('app_url')
     if app_url:
-        resolved = sc_request(
-            'resolve', url=app_url, client_id=app.config['CLIENT_ID'])
+        resolved = resolve_url(app_url)
         if 'errors' in resolved:
             return render_template('index.html',
                                    error='Sorry, we couldn\'t find your app')
