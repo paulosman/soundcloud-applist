@@ -37,17 +37,6 @@ def sc_request(path, **kwargs):
     return data
 
 
-def get_access_token(client_id, client_secret, redirect_uri, grant_type, code):
-    r = requests.post(URLS['TOKEN'], data={
-        'client_id': client_id,
-        'client_secret': client_secret,
-        'redirect_uri': redirect_uri,
-        'grant_type': grant_type,
-        'code': code,
-    })
-    return simplejson.loads(r.content)
-
-
 def get_tracks(app_id, order_by='created_at'):
     if order_by not in [None, 'created_at', 'hotness']:
         order_by = 'created_at'
