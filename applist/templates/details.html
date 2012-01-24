@@ -14,6 +14,16 @@
     </li>
     <li class="tab-content"></li>
   </ul>
+
+  <div class="pager">
+    {% for i in range(1, npages + 1) %}
+      {% if page == i %}
+        {{ i }} 
+      {% else %}
+        <a href="{{ url_for('details', app_id=app.id, page=i) }}">{{ i }}</a>
+      {% endif %}
+    {% endfor %}
+  </div>
 </div>
 
 {% endblock %}

@@ -1,4 +1,6 @@
 import os
+import math
+
 from urllib import quote, quote_plus
 
 import memcache
@@ -28,17 +30,31 @@ def urlencode(uri, plus=True):
 @app.route('/app/<app_id>/tracks/')
 def tracks(app_id):
     order_by = request.args.get('order_by')
-    return render_template('_tracks.html', tracks=get_tracks(
-        app_id, order_by=order_by))
+    tracks = get_tracks(app_id, order_by=order_by)[:4]
+    return render_template('_tracks.html', tracks=tracks)
 
 
-@app.route('/app/<app_id>/')
-def details(app_id):
+@app.route('/app/<app_id>/', defaults=dict(page=1))
+@app.route('/app/<app_id>/<int:page>/')
+def details(app_id, page):
     order_by = request.args.get('order_by')
     app_details = get_app(app_id)
     tracks = get_tracks(app_id, order_by=order_by)
+
+    # paginate
+    per_page = 4
+    npages = int(math.ceil(len(tracks) / float(per_page)))
+
+    if page < 1 or page > npages:
+        return redirect(url_for('details', app_id=app_id))
+
+    start = (page - 1) * per_page
+    end = page * per_page
+    tracks = tracks[start:end]
+
     return render_template(
-        'details.html', tracks=tracks, app=app_details)
+        'details.html', tracks=tracks, app=app_details,
+        npages=npages, page=page)
 
 
 @app.route('/')
